@@ -1,4 +1,11 @@
 {
-"niftyURL":"https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
-"dataBasePath":"/opt/scrapper/"
+
+  "basePath" : "/opt/scrapper2/data/",
+  "frequency" : 10,
+
+  "nifty50" : {
+    "url": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
+    "name": "nifty50"
+  }
+
 }
