@@ -1,5 +1,6 @@
 import time
 import requests
+import json
 import pandas as pd
 from scrap.Scrapper import Scrapper
 from bs4 import BeautifulSoup
@@ -7,12 +8,36 @@ from bs4 import BeautifulSoup
 class Nifty50Scrapper(Scrapper):
 
     def run(self):
-        page = requests.get(self.url)
+
+        (baseData, optData ) = self.fetchOpt()
+        futData = self.fetchFut()
+        data = pd.DataFrame(columns=['ts', 'underlying', 'future', 'option'])
+        data.loc[0] = [self.timestamp,  baseData,  futData,  optData]
+
+        self.save(data)
+
+
+    def fetchFut(self):
+
+        page = requests.get(self.urlFut)
+        page.status_code
+        page.content
+        soup = BeautifulSoup(page.content, 'html.parser')
+        dict = json.loads(soup.find(id="responseDiv").contents[0])['data'][0]
+        cols = dict.keys()
+        vals = dict.values()
+
+        df = pd.DataFrame( columns=cols)
+        df.loc[0] = vals
+        return df
+
+
+    def fetchOpt(self):
+        page = requests.get(self.urlOpt)
         page.status_code
         page.content
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        table_it = soup.find_all(class_="opttbldata")
         table_cls_1 = soup.find_all(id="octable")
 
         underlying = soup.find('b').contents[0].split(' ')[1]
@@ -37,9 +62,14 @@ class Nifty50Scrapper(Scrapper):
 
         col_list_fnl = [e for e in col_list if e not in ('CALLS', 'PUTS', 'Chart', '\xc2\xa0')]
 
+        for i, s in enumerate(col_list_fnl):
+            if i<10:
+                col_list_fnl[i] = 'c_'+s
+            if i>10 :
+                col_list_fnl[i] = 'p_' + s
+
         print col_list_fnl
         table_cls_2 = soup.find(id="octable")
-        all_trs = table_cls_2.find_all('tr')
         req_row = table_cls_2.find_all('tr')
 
         new_table = pd.DataFrame(index=range(0, len(req_row) - 3), columns=col_list_fnl)
@@ -67,8 +97,8 @@ class Nifty50Scrapper(Scrapper):
 
             row_marker += 1
 
-        new_table.insert(0, "Underlying", underlying)
-        self.save(new_table)
+        return (underlying, new_table)
 
-
+        #new_table.insert(0, "Underlying", underlying)
+        #self.save(new_table)
 

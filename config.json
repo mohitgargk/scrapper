@@ -1,10 +1,18 @@
 {
 
   "basePath" : "/opt/scrapper2/data/",
-  "frequency" : 10,
+  "frequency" : 60,
 
   "nifty50" : {
-    "url": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
+    "urlBase" : "",
+    "urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
+    "urlFut" : "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=NIFTY&instrument=FUTIDX",
     "name": "nifty50"
+  },
+    "worldIndices" : {
+    "urlBase" : "https://uk.finance.yahoo.com/world-indices",
+    "name": "world"
   }
+
+
 }
