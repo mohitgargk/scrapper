@@ -69,7 +69,6 @@ class NSEScrapper(Scrapper):
             if i>10 :
                 col_list_fnl[i] = 'p_' + s
 
-        print col_list_fnl
         table_cls_2 = soup.find(id="octable")
         req_row = table_cls_2.find_all('tr')
 
