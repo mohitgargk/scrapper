@@ -7,19 +7,22 @@ import numpy as np
 
 import json
 
-data = pd.DataFrame(columns=['a', 'b'])
-data.loc[0] = [1,2]
-data.loc[1] = [3,2]
+json = "\"{name}\"  : {    \"urlBase\" : \"\", \"urlFut\"  : \"https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying={name}&instrument=FUTSTK\", \"urlOpt\"  : \"https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol={name}\", \"name\"    : \"{name}\" }";
+stocks = "ADANIPORTS,AMBUJACEM,ASIANPAINT,AUROPHARMA,AXISBANK,BAJAJ-AUTO,BAJFINANCE,BPCL,BHARTIARTL,INFRATEL,BOSCHLTD,CIPLA,COALINDIA,DRREDDY,EICHERMOT,GAIL,HCLTECH,HDFCBANK,HEROMOTOCO,HINDALCO,HINDPETRO,HINDUNILVR,HDFC,ITC,ICICIBANK,IBULHSGFIN,IOC,INDUSINDBK,INFY,KOTAKBANK,LT,LUPIN,M&M,MARUTI,NTPC,ONGC,POWERGRID,RELIANCE,SBIN,SUNPHARMA,TCS,TATAMOTORS,TATASTEEL,TECHM,UPL,ULTRACEMCO,VEDL,WIPRO,YESBANK,ZEEL"
+stocks = stocks.split(",")
+
+jsonList = []
+
+for s in stocks :
+    jsonList.append(json.replace("{name}", s))
 
 
-json_str = data.to_json(orient='records')
 
-data2 = json.loads(json_str)
+for j in jsonList:
+    print(j)
 
-with open('data.json', 'w') as f:
-    json.dump(data2, f)
 
-pass
+    pass
 
 
 

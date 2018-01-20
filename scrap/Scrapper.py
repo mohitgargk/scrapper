@@ -9,8 +9,9 @@ class Scrapper(Thread):
         Thread.__init__(self)
 
         self.name = conf['name']
-        self.urlBase = conf['urlBase']
 
+        if 'urlBase' in conf:
+            self.urlBase = conf['urlBase']
         if 'urlOpt' in conf :
             self.urlOpt = conf['urlOpt']
         if 'urlFut' in conf:

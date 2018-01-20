@@ -5,7 +5,7 @@ import pandas as pd
 from scrap.Scrapper import Scrapper
 from bs4 import BeautifulSoup
 
-class Nifty50Scrapper(Scrapper):
+class NSEScrapper(Scrapper):
 
     def run(self):
 
@@ -24,6 +24,7 @@ class Nifty50Scrapper(Scrapper):
         page.content
         soup = BeautifulSoup(page.content, 'html.parser')
         dict = json.loads(soup.find(id="responseDiv").contents[0])['data'][0]
+        print("\n"+self.name)
         cols = dict.keys()
         vals = dict.values()
 
@@ -99,6 +100,4 @@ class Nifty50Scrapper(Scrapper):
 
         return (underlying, new_table)
 
-        #new_table.insert(0, "Underlying", underlying)
-        #self.save(new_table)
 

@@ -1,6 +1,6 @@
 import json
 import time
-from scrap.Nifty50Scrapper import Nifty50Scrapper
+from scrap.NSEScrapper import NSEScrapper
 from scrap.WorldIndicesScrapper import WorldIndicesScrapper
 
 with open('./config.json') as json_data_file:
@@ -14,16 +14,17 @@ while True :
 
     ts = long(time.time())
 
-    # Add nifty50
-    nifty50config = cfg["nifty50"]
-    niftyScrapper = Nifty50Scrapper(nifty50config, cfg["basePath"], ts )
 
     #Add world idxes
     worldIdxConfig = cfg['worldIndices']
     worldIdxScrapper = WorldIndicesScrapper(worldIdxConfig, cfg['basePath'], ts)
-
-    scrappers.append(niftyScrapper)
     scrappers.append(worldIdxScrapper)
+
+    # Add NSE
+    nseConfig = cfg["nse"]
+    for nconf in nseConfig:
+        nScrapper = NSEScrapper(nconf, cfg["basePath"], ts)
+        scrappers.append(nScrapper)
 
     for scrapper in scrappers:
         scrapper.start()

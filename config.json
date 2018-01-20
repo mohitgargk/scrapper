@@ -1,18 +1,320 @@
 {
 
-  "basePath" : "/opt/scrapper2/data/",
-  "frequency" : 60,
+	"basePath": "/opt/scrapper2/data/",
+	"frequency": 60,
 
-  "nifty50" : {
-    "urlBase" : "",
-    "urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
-    "urlFut" : "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=NIFTY&instrument=FUTIDX",
-    "name": "nifty50"
-  },
-    "worldIndices" : {
-    "urlBase" : "https://uk.finance.yahoo.com/world-indices",
-    "name": "world"
-  }
+	"worldIndices": {
+		"urlBase": "https://uk.finance.yahoo.com/world-indices",
+		"name": "world"
+	},
 
+    "nse" : [
+	{
+		"urlBase": "",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbolCode=-10006&symbol=NIFTY&symbol=NIFTY&instrument=-&date=-&segmentLink=17&symbolCount=2&segmentLink=17",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=NIFTY&instrument=FUTIDX",
+		"name": "nifty50"
+	},
+
+	{
+		"urlBase ": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ADANIPORTS&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ADANIPORTS",
+		"name": "ADANIPORTS"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=AMBUJACEM&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=AMBUJACEM",
+		"name": "AMBUJACEM"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ASIANPAINT&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ASIANPAINT",
+		"name": "ASIANPAINT"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=AUROPHARMA&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=AUROPHARMA",
+		"name": "AUROPHARMA"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=AXISBANK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=AXISBANK",
+		"name": "AXISBANK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=BAJAJ-AUTO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=BAJAJ-AUTO",
+		"name": "BAJAJ-AUTO"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=BAJFINANCE&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=BAJFINANCE",
+		"name": "BAJFINANCE"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=BPCL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=BPCL",
+		"name": "BPCL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=BHARTIARTL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=BHARTIARTL",
+		"name": "BHARTIARTL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=INFRATEL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=INFRATEL",
+		"name": "INFRATEL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=BOSCHLTD&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=BOSCHLTD",
+		"name": "BOSCHLTD"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=CIPLA&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=CIPLA",
+		"name": "CIPLA"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=COALINDIA&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=COALINDIA",
+		"name": "COALINDIA"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=DRREDDY&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=DRREDDY",
+		"name": "DRREDDY"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=EICHERMOT&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=EICHERMOT",
+		"name": "EICHERMOT"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=GAIL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=GAIL",
+		"name": "GAIL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HCLTECH&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HCLTECH",
+		"name": "HCLTECH"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HDFCBANK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HDFCBANK",
+		"name": "HDFCBANK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HEROMOTOCO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HEROMOTOCO",
+		"name": "HEROMOTOCO"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HINDALCO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HINDALCO",
+		"name": "HINDALCO"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HINDPETRO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HINDPETRO",
+		"name": "HINDPETRO"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HINDUNILVR&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HINDUNILVR",
+		"name": "HINDUNILVR"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=HDFC&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=HDFC",
+		"name": "HDFC"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ITC&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ITC",
+		"name": "ITC"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ICICIBANK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ICICIBANK",
+		"name": "ICICIBANK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=IBULHSGFIN&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=IBULHSGFIN",
+		"name": "IBULHSGFIN"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=IOC&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=IOC",
+		"name": "IOC"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=INDUSINDBK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=INDUSINDBK",
+		"name": "INDUSINDBK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=INFY&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=INFY",
+		"name": "INFY"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=KOTAKBANK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=KOTAKBANK",
+		"name": "KOTAKBANK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=LT&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=LT",
+		"name": "LT"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=LUPIN&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=LUPIN",
+		"name": "LUPIN"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=M%26M&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=M%26M",
+		"name": "M&M"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=MARUTI&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=MARUTI",
+		"name": "MARUTI"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=NTPC&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=NTPC",
+		"name": "NTPC"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ONGC&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ONGC",
+		"name": "ONGC"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=POWERGRID&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=POWERGRID",
+		"name": "POWERGRID"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=RELIANCE&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=RELIANCE",
+		"name": "RELIANCE"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SBIN&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=SBIN",
+		"name": "SBIN"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=SUNPHARMA",
+		"name": "SUNPHARMA"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=TCS&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=TCS",
+		"name": "TCS"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=TATAMOTORS&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=TATAMOTORS",
+		"name": "TATAMOTORS"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=TATASTEEL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=TATASTEEL",
+		"name": "TATASTEEL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=TECHM&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=TECHM",
+		"name": "TECHM"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=UPL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=UPL",
+		"name": "UPL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ULTRACEMCO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ULTRACEMCO",
+		"name": "ULTRACEMCO"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=VEDL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=VEDL",
+		"name": "VEDL"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=WIPRO&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=WIPRO",
+		"name": "WIPRO"
+	}, 
+    {
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=YESBANK&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=YESBANK",
+		"name": "YESBANK"
+	},
+	{
+		"urlBase": "",
+		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ZEEL&instrument=FUTSTK",
+		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=ZEEL",
+		"name": "ZEEL"
+	}]
 
 }
