@@ -3,7 +3,10 @@ import requests
 import json
 import pandas as pd
 from scrap.Scrapper import Scrapper
+from arbitrage.FutureSpot import FutureSpot
 from bs4 import BeautifulSoup
+import calendar
+import datetime
 
 class NSEScrapper(Scrapper):
 
@@ -13,6 +16,17 @@ class NSEScrapper(Scrapper):
         futData = self.fetchFut()
         data = pd.DataFrame(columns=['ts', 'underlying', 'future', 'option'])
         data.loc[0] = [self.timestamp,  baseData,  futData,  optData]
+
+        today = datetime.datetime.fromtimestamp(self.timestamp)
+        exDayTS = self.getLastThurdayTS(today.month, today.year)
+
+        # TODO Make arbitrage finders via base classes
+        FS = FutureSpot(self.cfg['rbiRate'], self.name, self.timestamp, exDayTS, data, self.cfg['futArbThreshold'])
+        trade = FS.getTrade()
+
+        if trade.loc[0]['GoNoGo'] == True :
+           print(trade)
+
 
         self.save(data)
 
@@ -24,7 +38,7 @@ class NSEScrapper(Scrapper):
         page.content
         soup = BeautifulSoup(page.content, 'html.parser')
         dict = json.loads(soup.find(id="responseDiv").contents[0])['data'][0]
-        print("\n"+self.name)
+        #print(self.name)
         cols = dict.keys()
         vals = dict.values()
 
@@ -100,3 +114,10 @@ class NSEScrapper(Scrapper):
         return (underlying, new_table)
 
 
+    def getLastThurdayTS(self, m, y):
+
+        cc = calendar.Calendar(firstweekday=calendar.SUNDAY).monthdatescalendar(y, m)
+        last = cc[len(cc) - 1][4]
+        if last.month != m:
+            last = last + datetime.timedelta(days=-7)
+        return time.mktime(last.timetuple())

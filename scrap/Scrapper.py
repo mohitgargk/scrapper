@@ -5,9 +5,10 @@ from threading import Thread
 
 class Scrapper(Thread):
 
-    def __init__(self, conf, basePath, timestamp):
+    def __init__(self, cfg, conf, basePath, timestamp):
         Thread.__init__(self)
 
+        self.cfg = cfg
         self.name = conf['name']
 
         if 'urlBase' in conf:

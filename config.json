@@ -2,6 +2,8 @@
 
 	"basePath": "/opt/scrapper2/data/",
 	"frequency": 60,
+    "rbiRate" :  6.3563,
+    "futArbThreshold" : 0.5,
 
 	"worldIndices": {
 		"urlBase": "https://uk.finance.yahoo.com/world-indices",
@@ -15,7 +17,6 @@
 		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=NIFTY&instrument=FUTIDX",
 		"name": "nifty50"
 	},
-
 	{
 		"urlBase ": "",
 		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=ADANIPORTS&instrument=FUTSTK",
@@ -303,7 +304,7 @@
 		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=WIPRO&instrument=FUTSTK",
 		"urlOpt": "https://www.nseindia.com/live_market/dynaContent/live_watch/option_chain/optionKeys.jsp?symbol=WIPRO",
 		"name": "WIPRO"
-	}, 
+	},
     {
 		"urlBase": "",
 		"urlFut": "https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=YESBANK&instrument=FUTSTK",

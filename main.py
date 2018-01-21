@@ -14,16 +14,15 @@ while True :
 
     ts = long(time.time())
 
-
     #Add world idxes
     worldIdxConfig = cfg['worldIndices']
-    worldIdxScrapper = WorldIndicesScrapper(worldIdxConfig, cfg['basePath'], ts)
+    worldIdxScrapper = WorldIndicesScrapper(cfg, worldIdxConfig, cfg['basePath'], ts)
     scrappers.append(worldIdxScrapper)
 
     # Add NSE
     nseConfig = cfg["nse"]
     for nconf in nseConfig:
-        nScrapper = NSEScrapper(nconf, cfg["basePath"], ts)
+        nScrapper = NSEScrapper(cfg, nconf, cfg["basePath"], ts)
         scrappers.append(nScrapper)
 
     for scrapper in scrappers:

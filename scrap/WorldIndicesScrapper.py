@@ -15,7 +15,7 @@ class WorldIndicesScrapper(Scrapper):
 
     def fetch(self):
 
-        page = requests.get('https://uk.finance.yahoo.com/world-indices')
+        page = requests.get(self.urlBase)
         page.status_code
         page.content
         soup = BeautifulSoup(page.content, 'html.parser')
