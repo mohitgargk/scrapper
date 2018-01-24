@@ -29,7 +29,7 @@ public class FutureArbitrage implements Comparable<FutureArbitrage>{
 
     @Override
     public int compareTo(FutureArbitrage o) {
-        if(this.getTimestamp()>o.getTimestamp())
+        if(this.getTimestamp()<o.getTimestamp())
             return 1;
         else return -1;
 

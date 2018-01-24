@@ -1,5 +1,4 @@
 import time
-import requests
 import json
 import pandas as pd
 from scrap.Scrapper import Scrapper
@@ -7,29 +6,33 @@ from arbitrage.FutureSpot import FutureSpot
 from bs4 import BeautifulSoup
 import calendar
 import datetime
+import requests
 
 class NSEScrapper(Scrapper):
 
     def run(self):
 
-        (baseData, optData ) = self.fetchOpt()
-        futData = self.fetchFut()
-        data = pd.DataFrame(columns=['ts', 'underlying', 'future', 'option'])
-        data.loc[0] = [self.timestamp,  baseData,  futData,  optData]
+        try:
 
-        today = datetime.datetime.fromtimestamp(self.timestamp)
-        exDayTS = self.getLastThurdayTS(today.month, today.year)
+            (baseData, optData ) = self.fetchOpt()
+            futData = self.fetchFut()
+            data = pd.DataFrame(columns=['ts', 'underlying', 'future', 'option'])
+            data.loc[0] = [self.timestamp,  baseData,  futData,  optData]
 
-        # TODO Make arbitrage finders via base classes
-        FS = FutureSpot(self.cfg['rbiRate'], self.name, self.timestamp, exDayTS, data, self.cfg['futArbThreshold'])
-        trade = FS.getTrade()
+            today = datetime.datetime.fromtimestamp(self.timestamp)
+            exDayTS = self.getLastThurdayTS(today.month, today.year)
 
-        if trade.loc[0]['GoNoGo'] == True :
-           print(trade)
+            # TODO Make arbitrage finders via base classes
+            FS = FutureSpot(self.cfg['rbiRate'], self.name, self.timestamp, exDayTS, data, self.cfg['futArbThreshold'])
+            trade = FS.getTrade()
 
+            if trade.loc[0]['GoNoGo'] == True :
+               print(trade)
+               self.postToWebapp('http://localhost:8080/arbitrage', trade)
 
-        self.save(data)
-
+            #self.save(data)
+        except Exception as ex:
+            pass
 
     def fetchFut(self):
 
@@ -121,3 +124,16 @@ class NSEScrapper(Scrapper):
         if last.month != m:
             last = last + datetime.timedelta(days=-7)
         return time.mktime(last.timetuple())
+
+
+    def postToWebapp(self, url, payloadDF):
+
+        head = {'Content-type': 'application/json'}
+
+        outDF = pd.DataFrame(columns = ['timestamp', 'trade'])
+        outDF.loc[0] = [self.timestamp, payloadDF.to_json(orient='records')]
+        payld = json.loads(outDF.to_json(orient='records'))[0]
+        payld = json.dumps(payld, indent=4, sort_keys=True)
+        ret = requests.post(url, data=payld)
+        print(ret.status_code)
+        return ret.status_code

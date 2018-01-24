@@ -1,7 +1,7 @@
 {
 
 	"basePath": "/opt/scrapper2/data/",
-	"frequency": 60,
+	"frequency": 1,
     "rbiRate" :  6.3563,
     "futArbThreshold" : 0.5,
 
