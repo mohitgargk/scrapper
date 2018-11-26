@@ -15,9 +15,9 @@ while True :
     ts = long(time.time())
 
     #Add world idxes
-    worldIdxConfig = cfg['worldIndices']
-    worldIdxScrapper = WorldIndicesScrapper(cfg, worldIdxConfig, cfg['basePath'], ts)
-    scrappers.append(worldIdxScrapper)
+#    worldIdxConfig = cfg['worldIndices']
+#    worldIdxScrapper = WorldIndicesScrapper(cfg, worldIdxConfig, cfg['basePath'], ts)
+#    scrappers.append(worldIdxScrapper)
 
     # Add NSE
     nseConfig = cfg["nse"]

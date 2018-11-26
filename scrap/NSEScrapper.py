@@ -3,6 +3,7 @@ import json
 import pandas as pd
 from scrap.Scrapper import Scrapper
 from arbitrage.FutureSpot import FutureSpot
+from option.LongStraddle import LongStraddle
 from bs4 import BeautifulSoup
 import calendar
 import datetime
@@ -26,11 +27,20 @@ class NSEScrapper(Scrapper):
             FS = FutureSpot(self.cfg['rbiRate'], self.name, self.timestamp, exDayTS, data, self.cfg['futArbThreshold'])
             trade = FS.getTrade()
 
-            if trade.loc[0]['GoNoGo'] == True :
-               print(trade)
-               self.postToWebapp('http://localhost:8080/arbitrage', trade)
+            #if True:
+               #print(trade)
+               #self.postToWebapp('http://localhost:8080/arbitrage', trade)
 
-            #self.save(data)
+
+            # TODO Find close spreads for long straddle
+            LS = LongStraddle(self.name, data, 3)
+            tradeOp = LS.getTrade();
+
+            #if tradeOp.loc[0]['GoNoGo'] == True:
+            if tradeOp.empty==False:
+                print(tradeOp)
+
+            self.save(data)
         except Exception as ex:
             pass
 
