@@ -124,25 +124,6 @@ class NSEScrapper(Scrapper):
 
         return (underlying, new_table)
 
-    def getLastThurdayPrivate(self, m, y):
-        cc = calendar.Calendar(firstweekday=calendar.SUNDAY).monthdatescalendar(y, m)
-        last = cc[len(cc) - 1][4]
-        if last.month != m:
-            last = last + datetime.timedelta(days=-7)
-        return time.mktime(last.timetuple())
-
-
-
-    def getLastThurday(self, m, y):
-
-        last = self.getLastThurdayPrivate(m,y)
-        if last ==  datetime.datetime.now().date() :
-            if m<12 :
-                return self.getLastThurdayPrivate(m+1,y)
-            else :
-                return self.getLastThurdayPrivate(1, y+1)
-
-        return time.mktime(last.timetuple())
 
     def postFSToWebapp(self, url, payloadDF):
 
@@ -164,3 +145,11 @@ class NSEScrapper(Scrapper):
         ret = requests.post(url, data=json.dumps(trade), headers=head)
         print(ret.status_code)
         return ret.status_code
+
+    def getLastThurdayTS(self, m, y):
+
+        cc = calendar.Calendar(firstweekday=calendar.SUNDAY).monthdatescalendar(y, m)
+        last = cc[len(cc) - 1][4]
+        if last.month != m:
+            last = last + datetime.timedelta(days=-7)
+        return time.mktime(last.timetuple())
