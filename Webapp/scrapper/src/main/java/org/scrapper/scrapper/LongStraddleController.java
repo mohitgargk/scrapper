@@ -60,6 +60,10 @@ public class LongStraddleController {
     }
 
 
+    @RequestMapping(value="/n",  method = RequestMethod.GET)
+    public Integer getN(@RequestBody Integer i) {
+        return daysLeft;
+    }
 
     @RequestMapping(value="/lsconfig",  method = RequestMethod.GET)
     public List<LongStraddleConfig> getConfigs() {
