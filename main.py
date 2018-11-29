@@ -1,11 +1,26 @@
 import json
 import time
 from scrap.NSEScrapper import NSEScrapper
-from scrap.WorldIndicesScrapper import WorldIndicesScrapper
+import calendar
+import datetime
+import requests
 
 with open('./config.json') as json_data_file:
     cfg = json.load(json_data_file)
 print(cfg)
+
+# with open('./probability.json') as json_data_file:
+#     days = daysLeft()
+#     pcfg = json.load(json_data_file)
+#     npcfg = [d for d in pcfg if d['day']==days]
+#
+#     head = {'Content-type': 'application/json'}
+#     ret = requests.post("http://localhost:8081/lsconfig", data=json.dumps(json.dumps(npcfg)), headers=head)
+#     print ret
+#
+# print(npcfg)
+
+
 
 frequency = cfg['frequency']
 scrappers = list()
@@ -13,11 +28,6 @@ scrappers = list()
 while True :
 
     ts = long(time.time())
-
-    #Add world idxes
-#    worldIdxConfig = cfg['worldIndices']
-#    worldIdxScrapper = WorldIndicesScrapper(cfg, worldIdxConfig, cfg['basePath'], ts)
-#    scrappers.append(worldIdxScrapper)
 
     # Add NSE
     nseConfig = cfg["nse"]
@@ -41,4 +51,36 @@ print("Exiting...")
 
 
 
+
+# def getLastThurdayPrivate(m, y):
+#     cc = calendar.Calendar(firstweekday=calendar.SUNDAY).monthdatescalendar(y, m)
+#     last = cc[len(cc) - 1][4]
+#     if last.month != m:
+#         last = last + datetime.timedelta(days=-7)
+#     return last
+#
+# def getLastThurday(m, y):
+#
+#     last = getLastThurdayPrivate(m, y)
+#
+#     if last < datetime.datetime.now().date():
+#         if m < 12:
+#             last = getLastThurdayPrivate(m + 1, y)
+#         else:
+#             last = getLastThurdayPrivate(1, y + 1)
+#
+#     return last
+#
+# def daysLeft() :
+#
+#     upcomingExpiry = getLastThurday(datetime.datetime.now().date().month, datetime.datetime.now().date().year)
+#     today = datetime.datetime.now().date()
+#     left = (upcomingExpiry - today).days
+#
+#     left = left * 5 /7
+#
+#     if left == 0: left = left+1
+#     if left >25 : left = 25
+#
+#     return left
 

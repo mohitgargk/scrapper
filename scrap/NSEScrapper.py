@@ -31,17 +31,16 @@ class NSEScrapper(Scrapper):
                #print(trade)
                #self.postToWebapp('http://localhost:8080/arbitrage', trade)
 
-
             # TODO Find close spreads for long straddle
-            LS = LongStraddle(self.name, data, 3)
+            LS = LongStraddle(self.name, data)
             tradeOp = LS.getTrade();
 
-            #if tradeOp.loc[0]['GoNoGo'] == True:
-            if tradeOp.empty==False:
-                print(tradeOp)
+            print(tradeOp)
+            self.postLSToWebapp('http://localhost:8081/ls', tradeOp)
 
             self.save(data)
         except Exception as ex:
+            print ex
             pass
 
     def fetchFut(self):
@@ -58,7 +57,6 @@ class NSEScrapper(Scrapper):
         df = pd.DataFrame( columns=cols)
         df.loc[0] = vals
         return df
-
 
     def fetchOpt(self):
         page = requests.get(self.urlOpt)
@@ -126,9 +124,7 @@ class NSEScrapper(Scrapper):
 
         return (underlying, new_table)
 
-
-    def getLastThurdayTS(self, m, y):
-
+    def getLastThurdayPrivate(self, m, y):
         cc = calendar.Calendar(firstweekday=calendar.SUNDAY).monthdatescalendar(y, m)
         last = cc[len(cc) - 1][4]
         if last.month != m:
@@ -136,7 +132,19 @@ class NSEScrapper(Scrapper):
         return time.mktime(last.timetuple())
 
 
-    def postToWebapp(self, url, payloadDF):
+
+    def getLastThurday(self, m, y):
+
+        last = self.getLastThurdayPrivate(m,y)
+        if last ==  datetime.datetime.now().date() :
+            if m<12 :
+                return self.getLastThurdayPrivate(m+1,y)
+            else :
+                return self.getLastThurdayPrivate(1, y+1)
+
+        return time.mktime(last.timetuple())
+
+    def postFSToWebapp(self, url, payloadDF):
 
         head = {'Content-type': 'application/json'}
 
@@ -145,5 +153,14 @@ class NSEScrapper(Scrapper):
         payld = json.loads(outDF.to_json(orient='records'))[0]
         payld = json.dumps(payld, indent=4, sort_keys=True)
         ret = requests.post(url, data=payld)
+        print(ret.status_code)
+        return ret.status_code
+
+    def postLSToWebapp(self, url, trade):
+
+        print "POSTING: " + json.dumps(trade)
+        head = {'Content-type': 'application/json'}
+
+        ret = requests.post(url, data=json.dumps(trade), headers=head)
         print(ret.status_code)
         return ret.status_code
