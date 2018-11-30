@@ -20,8 +20,6 @@ print(cfg)
 #
 # print(npcfg)
 
-
-
 frequency = cfg['frequency']
 activeDuringDay = cfg['activeDuringDay']
 scrappers = list()
