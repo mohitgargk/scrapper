@@ -14,5 +14,9 @@ public class LongStraddleTrade {
     float ce;
     float pe;
     float spread;
+    String date;
 
+    public String toString() {
+        return "[" + scrip + " | " + price + " | " + strike + " | " + ce + " | " + pe + " | " +spread + " | " + date+  "]";
+    }
 }

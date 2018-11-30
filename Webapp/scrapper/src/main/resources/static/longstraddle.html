@@ -24,6 +24,7 @@
             {title:"CE", field:"ce", sorter:"number", align:"center"},
             {title:"PE", field:"pe", sorter:"number", align:"center"},
             {title:"SPREAD(%)", field:"spread", sorter:"number", align:"center"},
+            {title:"TIME", field:"date", sorter:"String", align:"center"},
             {title:"P(1%)", field:"p1", sorter:"number", align:"center"},
             {title:"P(2%)", field:"p2", sorter:"number", align:"center"},
             {title:"P(3%)", field:"p3", sorter:"number", align:"center"},
@@ -31,10 +32,13 @@
             {title:"P(5%)", field:"p5", sorter:"number", align:"center"},
             {title:"P(6%)", field:"p6", sorter:"number", align:"center"},
             {title:"P(7%)", field:"p7", sorter:"number", align:"center"},
+            {title:"P(8%)", field:"p8", sorter:"number", align:"center"},
+            {title:"P(9%)", field:"p9", sorter:"number", align:"center"},
+            {title:"P(10%)", field:"p10", sorter:"number", align:"center"},
         ],
     });
 
-    setInterval(myMethod, 3000);
+    setInterval(myMethod, 30000);
     function myMethod( )
     {
         table.setData("/ls");

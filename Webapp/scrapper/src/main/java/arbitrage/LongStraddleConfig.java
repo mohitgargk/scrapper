@@ -16,6 +16,9 @@ public class LongStraddleConfig {
     float p5;
     float p6;
     float p7;
+    float p8;
+    float p9;
+    float p10;
     int day;
 
 

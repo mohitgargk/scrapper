@@ -14,6 +14,7 @@ public class LongStraddle {
     float CE;
     float PE;
     float SPREAD;
+    String date;
 
     float p1;
     float p2;
@@ -22,6 +23,9 @@ public class LongStraddle {
     float p5;
     float p6;
     float p7;
+    float p8;
+    float p9;
+    float p10;
     int day;
 
 

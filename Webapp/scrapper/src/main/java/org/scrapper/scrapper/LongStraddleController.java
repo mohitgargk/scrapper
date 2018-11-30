@@ -27,7 +27,7 @@ public class LongStraddleController {
     @RequestMapping(value="/ls",  method = RequestMethod.POST)
     public String postTrades(@RequestBody LongStraddleTrade lsc) {
 
-        System.out.println(lsc.getScrip());
+        System.out.println(lsc.toString());
         LongStraddle ls = new LongStraddle();
         if(longStraddles.containsKey(lsc.getScrip()))
             ls = longStraddles.get(lsc.getScrip());
@@ -38,6 +38,7 @@ public class LongStraddleController {
         ls.setPRICE(lsc.getPrice());
         ls.setSPREAD(lsc.getSpread());
         ls.setSTRIKE(lsc.getStrike());
+        ls.setDate(lsc.getDate());
 
         longStraddles.put(lsc.getScrip(),ls);
 
@@ -80,6 +81,9 @@ public class LongStraddleController {
                     lsc.setP5(ls.getP5());
                     lsc.setP6(ls.getP6());
                     lsc.setP7(ls.getP7());
+                    lsc.setP8(ls.getP8());
+                    lsc.setP9(ls.getP9());
+                    lsc.setP10(ls.getP10());
                     return  lsc;
                 }).collect(Collectors.toList());
     }
@@ -101,6 +105,10 @@ public class LongStraddleController {
             ls.setP5(lsc.getP5());
             ls.setP6(lsc.getP6());
             ls.setP7(lsc.getP7());
+            ls.setP8(lsc.getP8());
+            ls.setP8(lsc.getP9());
+            ls.setP8(lsc.getP10());
+
             ls.setSCRIP(lsc.getScrip());
             longStraddles.put(lsc.getScrip(),ls);
         }
