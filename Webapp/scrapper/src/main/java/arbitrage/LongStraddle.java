@@ -28,6 +28,8 @@ public class LongStraddle {
     float p10;
     int day;
 
+    float breakeven;
+
 
 
 }

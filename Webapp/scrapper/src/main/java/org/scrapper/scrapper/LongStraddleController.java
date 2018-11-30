@@ -21,7 +21,30 @@ public class LongStraddleController {
 
     @RequestMapping(value="/ls",  method = RequestMethod.GET)
     public List<LongStraddle> getTrades() {
-        return new ArrayList<>(longStraddles.values());
+        return new ArrayList<>(longStraddles
+                .values()
+                .stream()
+                .map(ls -> {
+
+                    float[] probabs = {0,0, ls.getP2(), ls.getP3(), ls.getP4(), ls.getP5(), ls.getP6(), ls.getP7(), ls.getP8(), ls.getP9(), ls.getP10()};
+
+                    Double spread = new Double(ls.getSPREAD());
+                    int decimal = spread.intValue();
+                    float fraction  = new Double(spread - decimal).floatValue();
+                    float brokerage = (float) (spread*0.01);
+
+                    if(decimal<10) {
+                        float low = probabs[decimal];
+                        float high = probabs[decimal+1];
+
+                        float probability = (low + (high-low)*(fraction+brokerage))*100;
+                        ls.setBreakeven(probability);
+                    }
+
+                    return ls;
+                })
+                .collect(Collectors.toList())
+        );
     }
 
     @RequestMapping(value="/ls",  method = RequestMethod.POST)
