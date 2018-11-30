@@ -36,7 +36,7 @@ class NSEScrapper(Scrapper):
             tradeOp = LS.getTrade();
 
             print(tradeOp)
-            self.postLSToWebapp('http://localhost:8081/ls', tradeOp)
+            self.postLSToWebapp('http://localhost:8080/ls', tradeOp)
 
             self.save(data)
         except Exception as ex:

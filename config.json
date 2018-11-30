@@ -2,6 +2,7 @@
 
 	"basePath": "/opt/scrapper2/data/",
 	"frequency": 1,
+	"activeDuringDay": true,
     "rbiRate" :  6.3563,
     "futArbThreshold" : 0.5,
 

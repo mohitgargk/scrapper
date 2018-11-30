@@ -23,29 +23,37 @@ print(cfg)
 
 
 frequency = cfg['frequency']
+activeDuringDay = cfg['activeDuringDay']
 scrappers = list()
 
 while True :
 
-    ts = long(time.time())
+    hour = datetime.datetime.now().hour
 
-    # Add NSE
-    nseConfig = cfg["nse"]
-    for nconf in nseConfig:
-        nScrapper = NSEScrapper(cfg, nconf, cfg["basePath"], ts)
-        scrappers.append(nScrapper)
+    if (hour<9 and hour>16) and activeDuringDay==False :
 
-    for scrapper in scrappers:
-        scrapper.start()
+        print("Skipping because market not open")
+        time.sleep(60*60)
 
-    for scrapper in scrappers:
-        scrapper.join()
+    else:
+        ts = long(time.time())
 
-    print("Completed Scrapping at ts=" + str(ts))
-    scrappers = list()
+        # Add NSE
+        nseConfig = cfg["nse"]
+        for nconf in nseConfig:
+            nScrapper = NSEScrapper(cfg, nconf, cfg["basePath"], ts)
+            scrappers.append(nScrapper)
 
-    time.sleep(frequency)
+        for scrapper in scrappers:
+            scrapper.start()
 
+        for scrapper in scrappers:
+            scrapper.join()
+
+        print("Completed Scrapping at ts=" + str(ts))
+        scrappers = list()
+
+        time.sleep(frequency)
 
 print("Exiting...")
 
