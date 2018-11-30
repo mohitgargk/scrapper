@@ -40,6 +40,7 @@ public class LongStraddleController {
         ls.setSTRIKE(lsc.getStrike());
         ls.setDate(lsc.getDate());
 
+
         longStraddles.put(lsc.getScrip(),ls);
 
         return "OK";
@@ -106,8 +107,8 @@ public class LongStraddleController {
             ls.setP6(lsc.getP6());
             ls.setP7(lsc.getP7());
             ls.setP8(lsc.getP8());
-            ls.setP8(lsc.getP9());
-            ls.setP8(lsc.getP10());
+            ls.setP9(lsc.getP9());
+            ls.setP10(lsc.getP10());
 
             ls.setSCRIP(lsc.getScrip());
             longStraddles.put(lsc.getScrip(),ls);
