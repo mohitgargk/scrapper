@@ -25,7 +25,7 @@ class Scrapper(Thread):
         pass
 
     def save(self, data):
-        dirs = self.basePath + '/' + self.name
+        dirs = self.basePath + '/scrip=' + self.name
         if not os.path.exists(dirs):
             os.makedirs(dirs)
 
