@@ -34,6 +34,9 @@ class LongStraddle:
 
             spread = 100 * (ce + pe) / u;
 
+            if (abs(u-s)/u)>0.2 :
+                continue
+
             if ce > 0.01 and pe > 0.01 :
                 if spread_min > spread :
 
