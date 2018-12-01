@@ -28,7 +28,7 @@ while True :
 
     hour = datetime.datetime.now().hour
 
-    if (hour<8 and hour>16) and activeDuringDay==False :
+    if (hour<8 or hour>16) and activeDuringDay==False :
 
         print("Skipping because market not open")
         time.sleep(60*60)
