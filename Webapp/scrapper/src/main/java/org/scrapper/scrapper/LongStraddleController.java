@@ -63,6 +63,11 @@ public class LongStraddleController {
         ls.setSTRIKE(lsc.getStrike());
         ls.setDate(lsc.getDate());
 
+        ls.setMax_c_OI_Change(lsc.getMax_c_OI_Change());
+        ls.setMax_p_OI_Change(lsc.getMax_p_OI_Change());
+        ls.setMaxpain_at(lsc.getMaxpain_at());
+        ls.setMaxpain_total(lsc.getMaxpain_total());
+
 
         longStraddles.put(lsc.getScrip(),ls);
 

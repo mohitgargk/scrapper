@@ -16,6 +16,11 @@ public class LongStraddleTrade {
     float spread;
     String date;
 
+    float maxpain_total;
+    float max_p_OI_Change;
+    float max_c_OI_Change;
+    float maxpain_at;
+
     public String toString() {
         return "[" + scrip + " | " + price + " | " + strike + " | " + ce + " | " + pe + " | " +spread + " | " + date+  "]";
     }

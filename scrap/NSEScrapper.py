@@ -1,6 +1,8 @@
 import time
 import json
 import pandas as pd
+
+from option.MaxPain import MaxPain
 from scrap.Scrapper import Scrapper
 from arbitrage.FutureSpot import FutureSpot
 from option.LongStraddle import LongStraddle
@@ -17,8 +19,8 @@ class NSEScrapper(Scrapper):
 
             (baseData, optData ) = self.fetchOpt()
             futData = self.fetchFut()
-            data = pd.DataFrame(columns=['ts', 'underlying', 'future', 'option'])
-            data.loc[0] = [self.timestamp,  baseData,  futData,  optData]
+            data = pd.DataFrame(columns=['ts', 'url', 'underlying', 'future', 'option'])
+            data.loc[0] = [self.timestamp, self.urlOpt,  baseData,  futData,  optData]
 
             today = datetime.datetime.fromtimestamp(self.timestamp)
             exDayTS = self.getLastThurdayTS(today.month, today.year)
@@ -35,8 +37,14 @@ class NSEScrapper(Scrapper):
             LS = LongStraddle(self.name, data)
             tradeOp = LS.getTrade();
 
-            print(tradeOp)
-            self.postLSToWebapp('http://localhost:8080/ls', tradeOp)
+            # TODO : Get maxpain strike, maxpain amount, most OI+ change
+            MP = MaxPain(self.name, data);
+            tradeMP = MP.getTrade()
+
+            trade = tradeOp.copy();
+            trade.update(tradeMP)
+
+            self.postLSToWebapp('http://localhost:8080/ls', trade)
 
             self.save(data)
         except Exception as ex:

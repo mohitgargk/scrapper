@@ -16,6 +16,11 @@ public class LongStraddle {
     float SPREAD;
     String date;
 
+    float maxpain_total;
+    float max_p_OI_Change;
+    float max_c_OI_Change;
+    float maxpain_at;
+
     float p1;
     float p2;
     float p3;
